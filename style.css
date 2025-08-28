@@ -2,7 +2,7 @@
 :root {
     /* Light theme variables */
     --bg-color: #C3CDFA;
-    --text-color: black;
+    --text-color: rgba(0, 0, 0, 0.7);
   
     /* Icon fill colors for light mode */
     --icon-fill: #333;
@@ -10,7 +10,7 @@
 
     --input-color : black;
 }
-  
+
 /* ============ Dark Theme Overrides ============ */
 [data-theme="dark"] {
     /* Dark theme variables */
