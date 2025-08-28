@@ -1,3 +1,6 @@
+/* Import Open Props for easing */
+@import "https://unpkg.com/open-props/easings.min.css";
+
 /* ============ Base (Light) Theme ============ */
 :root {
     /* Light theme variables */
@@ -52,7 +55,7 @@ html,body{
     scroll-behavior:smooth;
 }
 
-/* Add this to your style.css */
+/* ============ Theme Toggle Styles ============ */
 .theme-toggle {
     --size: 2rem;
     --icon-fill: var(--text-color);
@@ -81,7 +84,47 @@ html,body{
     block-size: 100%;
     stroke-linecap: round;
 }
-  
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+  transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
 /* Update existing animation code with proper easing */
 @media (prefers-reduced-motion: no-preference) {
     .sun-and-moon > .sun {
@@ -106,10 +149,12 @@ html,body{
     [data-theme="dark"] .sun-and-moon > .sun {
         transition-timing-function: var(--ease-3);
         transition-duration: .25s;
+        transform: scale(1.75);
     }
     
     [data-theme="dark"] .sun-and-moon > .sun-beams {
         transition-duration: .15s;
+        transform: rotateZ(-25deg);
     }
     
     [data-theme="dark"] .sun-and-moon > .moon > circle {
@@ -264,15 +309,14 @@ a{
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    align-items: flex-start; /* Changed from center to flex-start */
+    align-items: flex-start;
     width: 100%;
     justify-content: space-around;
-    margin-bottom: 4rem; /* Add space between projects */
-    min-height: auto; /* Remove fixed height constraints */
+    margin-bottom: 4rem;
+    min-height: auto;
 }
 
 .project .part1 {
-    /* flex: 1 1 300px; */
     max-width: 600px;
 }
 
@@ -299,7 +343,7 @@ a{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 3rem; /* Add consistent spacing between project sections */
+    gap: 3rem;
     padding: 2rem;
 }
 
@@ -308,7 +352,7 @@ a{
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    min-height: auto; /* Remove fixed height */
+    min-height: auto;
 }
 
 /* Optional: smaller font & spacing for mobile */
@@ -448,39 +492,37 @@ a{
 }
 
 @media only screen and (max-width: 480px) {
-    /* Add these fixes */
     html, body {
         width: 100%;
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-x: hidden;
     }
 
     .main {
         width: 100%;
-        padding: 2rem; /* Reduce padding for small screens */
+        padding: 2rem;
         margin: 0;
-        min-height: 100vh; /* Ensure full viewport height */
+        min-height: 100vh;
     }
 
     .Home {
         height: auto;
-        /* Use min-height instead of fixed height */
         padding: 1rem;
         width: 100%;
     }
 
     .nav {
-        flex-wrap: wrap; /* Allow items to wrap if needed */
+        flex-wrap: wrap;
         gap: 0.5rem;
         display: flex;
         padding: 0.5rem 0;
     }
 
     .nav a,button {
-        font-size: .95rem; /* Slightly larger for mobile */
+        font-size: .95rem;
     }
   
     .block1 span {
-        font-size: 1.6rem; /* Adjust heading size */
+        font-size: 1.6rem;
     }
     
     .Home p{
@@ -515,7 +557,7 @@ a{
         width: 100%;
         flex-direction: column;
         display: flex;
-        gap: 2rem; /* Reduced from 1rem to prevent overlap */
+        gap: 2rem;
         justify-content: space-between;
     }
     .project part1{
@@ -535,7 +577,7 @@ a{
         flex-direction: column;
         gap: 1rem;
         width: 100%;
-        min-height: auto; /* Remove fixed height that was causing overflow */
+        min-height: auto;
     }
     
     .block-sub-part a{
@@ -545,24 +587,24 @@ a{
     .project{
         display: flex;
         flex-direction: column;
-        gap: 1rem; /* Reduced gap */
+        gap: 1rem;
         width: 100%;
         margin-top: 1rem;
         margin-bottom: 2rem;
-        height: auto; /* Remove fixed height - let content determine height */
-        min-height: auto; /* Remove min-height constraint */
+        height: auto;
+        min-height: auto;
     }
     
     .project .part1{
         width: 100%;
-        height: auto; /* Let image height be natural */
+        height: auto;
     }
     
     .project .part2{
         font-size: 1rem;
         width: 100%;
-        height: auto; /* Remove fixed height */
-        padding: 1rem 0; /* Adjust padding */
+        height: auto;
+        padding: 1rem 0;
     }
     
     .contact-me{
