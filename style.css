@@ -258,95 +258,47 @@ a{
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
-}
-
-.Projects{
-    width: 100%;
+}.project {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+     /* allows items to wrap on smaller screens */
     gap: 2rem;
-    padding: 2rem;
-}
-
-.Projects .block1 h1{
-    font-size: 2.4rem;
-    font-weight: 700;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.Projects .block2{
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-}
-
-.Projects .block2 .block-sub-part{
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.Projects .block2 .project{
     width: 100%;
-   
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    
 }
 
-.project .part1{
-    width: 60%;
-    height: 100%;
+.project .part1 {
+    flex: 1 1 300px; /* grow, shrink, base width */
+    max-width: 600px; /* optional, prevents huge images on large screens */
 }
 
-.project .part2{
-    width: 50%;
-    height: 100%;
+.project .part2 {
+    flex: 1 1 300px;
+    min-width: 250px; /* ensures readability */
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
 }
 
-.project .part1 img{
-    object-fit: cover;
-    height: 100%;
+.project .part1 img {
     width: 100%;
-    background-position: center;
-    background-image: cover;
-    background-size: cover;
+    height: auto; /* keeps aspect ratio */
+    object-fit: cover;
+    border-radius: 8px; /* optional: aesthetic rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
-.projects .project .part3{
-   display: flex;
-   flex-direction: row;
+/* Optional: smaller font & spacing for mobile */
+@media (max-width: 768px) {
+    .project {
+        flex-direction: column;
+    
+    }
+ 
 }
 
-.project .part2 span{
-    font-weight: 900;
-    color: var(--text-color);
-}
-
-.part1 img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  background-size: cover;
-  background-position: center;
-  /* Subtle dark shadow for contrast on white background */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.project p{
-    font-size: 0.9rem;
-    font-weight: 900;
-}
-
-.Projects h2{
-    text-decoration: underline;
-}
 
 .form-group input,textarea{
     color: var(--text-color);
@@ -567,19 +519,22 @@ a{
     .project{
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
         width: 100%;
-        height: 200vh;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        height: 80vh;
     }
     
     .project .part1{
         width: 100%;
-        height: 100%;
+        height: 20%;
     }
     
     .project .part2{
         font-size: 1rem;
         width: 100%;
+        height: 80%;
     }
     
     .contact-me{
