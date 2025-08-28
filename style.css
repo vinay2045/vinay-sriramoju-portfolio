@@ -2,7 +2,7 @@
 :root {
     /* Light theme variables */
     --bg-color: #C3CDFA;
-    --text-color: gray;
+    --text-color: black;
   
     /* Icon fill colors for light mode */
     --icon-fill: #333;

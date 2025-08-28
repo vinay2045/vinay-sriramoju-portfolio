@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vinay Sriramoju -Portfolio</title>
+    <script>
+        (function() {
+          const storageKey = 'theme-preference';
+          const theme = localStorage.getItem(storageKey)
+            || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        })();
+      </script>
+      
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Add this in your <head> section -->
 <link rel="stylesheet" href="https://unpkg.com/open-props/easings.min.css">
