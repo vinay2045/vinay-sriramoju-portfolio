@@ -1,0 +1,732 @@
+/* ============ Base (Light) Theme ============ */
+:root {
+    /* Light theme variables - Pixelated Code Theme */
+    --bg-color: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-accent: #2d2d30;
+    --text-color: #00ff41;
+    --text-secondary: #00cc33;
+    --text-muted: #008822;
+    --border-color: #00ff41;
+    --pixel-green: #00ff41;
+    --pixel-dark: #001100;
+  
+    /* Icon fill colors for light mode */
+    --icon-fill: #00ff41;
+    --icon-fill-hover: #00cc33;
+
+    --input-color: #00ff41;
+}
+  
+/* ============ Dark Theme Overrides ============ */
+[data-theme="dark"] {
+    /* Dark theme variables - Retro Terminal */
+    --bg-color: #000000;
+    --bg-secondary: #111111;
+    --bg-accent: #1a1a1a;
+    --text-color: #00ff00;
+    --text-secondary: #00dd00;
+    --text-muted: #009900;
+    --border-color: #00ff00;
+    --input-color: #00ff00;
+  
+    /* Icon fill colors for dark mode */
+    --icon-fill: #00ff00;
+    --icon-fill-hover: #00dd00;
+}
+  
+/* ============ Apply Variables ============ */
+body {
+    background: var(--bg-color);
+    background-image: 
+        /* Pixelated grid pattern */
+        linear-gradient(90deg, var(--pixel-dark) 1px, transparent 1px),
+        linear-gradient(var(--pixel-dark) 1px, transparent 1px),
+        /* Matrix-style rain effect */
+        radial-gradient(circle at 25% 25%, var(--pixel-green) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--pixel-green) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 40px 40px, 60px 60px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+    animation: matrixRain 20s infinite linear;
+}
+
+@keyframes matrixRain {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 0 0, 0 0, 0 -40px, 0 -60px; }
+}
+  
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, 
+    color 0.5s ease, 
+    border-color 0.5s ease;
+    color: var(--text-color);
+}
+
+html,body{
+    width: 100%;
+    font-family: "Courier New", "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-behavior: smooth;
+    text-shadow: 0 0 5px var(--pixel-green);
+}
+
+/* Pixelated borders and glitch effects */
+.main {
+    border: 2px solid var(--border-color);
+    border-image: linear-gradient(45deg, var(--pixel-green), var(--text-secondary)) 1;
+    box-shadow: 
+        inset 0 0 50px rgba(0, 255, 65, 0.1),
+        0 0 20px rgba(0, 255, 65, 0.2);
+    backdrop-filter: blur(1px);
+}
+
+/* Add this to your style.css */
+.theme-toggle {
+    --size: 2rem;
+    --icon-fill: var(--text-color);
+    --icon-fill-hover: var(--text-color);
+    
+    background: none;
+    border: none;
+    padding: 0;
+    inline-size: var(--size);
+    block-size: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    outline-offset: 5px;
+    transition: transform 0.3s var(--ease-elastic-3);
+}
+  
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+  
+.sun-and-moon {
+    inline-size: 100%;
+    block-size: 100%;
+    stroke-linecap: round;
+}
+  
+/* Update existing animation code with proper easing */
+@media (prefers-reduced-motion: no-preference) {
+    .sun-and-moon > .sun {
+        transition: transform .5s var(--ease-elastic-3);
+    }
+    
+    .sun-and-moon > .sun-beams {
+        transition: transform .5s var(--ease-elastic-4), 
+                    opacity .5s var(--ease-3);
+    }
+    
+    .sun-and-moon .moon > circle {
+        transition: transform .25s var(--ease-out-5);
+    }
+
+    @supports (cx: 1) {
+        .sun-and-moon .moon > circle {
+            transition: cx .25s var(--ease-out-5);
+        }
+    }
+    
+    [data-theme="dark"] .sun-and-moon > .sun {
+        transition-timing-function: var(--ease-3);
+        transition-duration: .25s;
+    }
+    
+    [data-theme="dark"] .sun-and-moon > .sun-beams {
+        transition-duration: .15s;
+    }
+    
+    [data-theme="dark"] .sun-and-moon > .moon > circle {
+        transition-duration: .5s;
+        transition-delay: .25s;
+    }
+}
+
+a{
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.main{
+    align-items: flex-start;
+    min-width: 80%;
+    width: 60%;
+    height: 100%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.3rem;
+}
+
+.block1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.block1 a{
+    text-decoration: underline;
+}
+
+.block2 p{
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 600;
+    opacity: 2;
+}
+
+.block2{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.block2 a{
+    text-decoration: underline;
+    opacity: 10;
+    font-weight: 700;
+}
+
+.nav a{
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 2;
+}
+
+.block1 span{
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.block3{
+    width: 100%;
+    height: 18rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.block3 img{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   background-position: center;
+   background-image: cover;
+}
+
+.About-me{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.Skills{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.frontend-skills{
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid var(--text-color);
+    gap: 3rem;
+}
+
+.frontend-skills .part1{
+    display: flex;
+    gap: 3rem;
+}
+
+.backend-skills{
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid var(--text-color);
+    gap: 3rem;
+}
+
+.backend-skills .part1{
+    display: flex;
+    gap: 3rem;
+}
+
+.programming-skills{
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid var(--text-color);
+    gap: 3rem;
+}
+
+.programming-skills .part1{
+    display: flex;
+    gap: 3rem;
+}
+
+.About-me .block1 h1{
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.Projects{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.Projects .block1 h1{
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.Projects .block2{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.Projects .block2 .block-sub-part{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.Projects .block2 .project{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.project .part1{
+    width: 60%;
+    height: 100%;
+}
+
+.project .part2{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.project .part1 img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-image: cover;
+    background-size: cover;
+}
+
+.projects .project .part3{
+   display: flex;
+   flex-direction: row;
+}
+
+.project .part2 span{
+    font-weight: 900;
+    color: var(--text-color);
+}
+
+.part1 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  /* Subtle dark shadow for contrast on white background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.project p{
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.Projects h2{
+    text-decoration: underline;
+}
+
+.form-group input,textarea{
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    background-color: var(--bg-color);
+}
+
+.contact-me h1{
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    width: 100%;
+}
+
+.contact-form {
+    color: var(--input-color);
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-family: "Space Mono", monospace;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #666;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    font-family: monospace;
+    font-weight: 700;
+    background: #2d2d2d;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+.social-links {
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background: var(--bg-color);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #2d2d2d;
+    color: white;
+    transform: translateX(10px);
+}
+
+.social-link i {
+    width: 20px;
+    text-align: center;
+}
+
+.contact-me .block1 p{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.block2contact-content{
+    display: flex;
+   width: 100%;
+    gap: 1rem;
+}
+
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.success-message {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    animation: fadeOut 3s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Add these fixes */
+    html, body {
+        width: 100%;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .main {
+        width: 100%;
+        padding: 2rem; /* Reduce padding for small screens */
+        margin: 0;
+        min-height: 100vh; /* Ensure full viewport height */
+    }
+
+    .Home {
+        height: auto;
+        /* Use min-height instead of fixed height */
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .nav {
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        gap: 0.5rem;
+        display: flex;
+        padding: 0.5rem 0;
+    }
+
+    .nav a,button {
+        font-size: .95rem; /* Slightly larger for mobile */
+    }
+  
+    .block1 span {
+        font-size: 1.6rem; /* Adjust heading size */
+    }
+    
+    .Home p{
+        font-size: 1rem;
+    }
+    
+    .block3{
+        width: 100%;
+        padding: 0;
+        height: 10rem;
+    }
+    
+    .block3 img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .About-me{
+        padding: 1rem;
+    }
+    
+    .About-me .block1 h1{
+        font-size: 1.6rem;
+    }
+    
+    .About-me p{
+        font-size: 1rem;
+    }
+    
+    .Projects{
+        padding: 1rem;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+    
+    .Projects h1 a{
+        font-size: 1.6rem;
+    }
+    
+    .Projects h2 a{
+        font-size: 1.4rem;
+    }
+    
+    .block-sub-part{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        min-height: 80vh;
+    }
+    
+    .block-sub-part a{
+        font-size: .9rem;
+    }
+
+    .project{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        height: 200vh;
+    }
+    
+    .project .part1{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .project .part2{
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    .contact-me{
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    .contact-me h1{
+        font-size: 1.6rem;
+    }
+    
+    .contact-me .block1 p{
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    .block2contact-content{
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .contact-form{
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    .social-links{
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    .form-group{
+        font-size: 1rem;
+    }
+    
+    .form-group input,textarea{
+        font-size: 1rem;
+    }
+}
+
+/* Hamburger Menu CSS */
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        padding: 6rem 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Hamburger Animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Hide original nav items */
+    .nav > a:not(.theme-toggle) {
+        display: none;
+    }
+}
